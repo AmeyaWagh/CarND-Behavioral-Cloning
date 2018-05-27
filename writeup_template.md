@@ -1,5 +1,7 @@
 # **Behavioral Cloning** 
 
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
+
 ---
 
 <!-- ## Writeup Template
@@ -35,11 +37,20 @@ The goals / steps of this project are the following:
 
 <div style="text-align:center"><img src=./assets/final_run.gif width="600" height="400"></div>
 
-[Dashcam](https://www.youtube.com/watch?v=XiGJvkqjmzU&feature=youtu.be)
 
+---
+#### Youtube Links
 
-[Final_video](https://www.youtube.com/watch?v=nuFGrUctFHo&feature=youtu.be)
-
+<div style="text-align:center;">
+	<span style="display: inline-block;">
+	<a href=https://www.youtube.com/watch?v=XiGJvkqjmzU&feature=youtu.be>
+		<img src=https://img.youtube.com/vi/XiGJvkqjmzU/0.jpg width="300" height="200">
+	</a>
+	<a href=https://www.youtube.com/watch?v=nuFGrUctFHo&feature=youtu.be>
+		<img src=https://img.youtube.com/vi/nuFGrUctFHo/0.jpg width="300" height="200">
+	</a>
+	</span>
+</div>
 ---
 ### Files Submitted & Code Quality
 
@@ -51,9 +62,6 @@ My project includes the following files:
 ├── assets
 ├── dataHandler.py
 ├── drive.py
-├── examples
-├── imgs
-├── LICENSE
 ├── model.h5
 ├── model.py
 ├── README.md
@@ -131,7 +139,7 @@ ________________________________________________________________________________
 ```
 
 
-<div style="text-align:center"><img src=./assets/model.png width="100" height="800"></div>
+<!-- <div style="text-align:center"><img src=./assets/model.png width="100" height="800"></div> -->
 
 #### 1. An appropriate model architecture has been employed
 
