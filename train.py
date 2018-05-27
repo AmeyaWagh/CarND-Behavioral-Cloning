@@ -3,12 +3,13 @@ from dataHandler import *
 import matplotlib.pyplot as plt
 
 
-SAMPLES_PER_EPOCH = 20000
-EPOCHS = 7
-VALIDATION_SAMPLES = 64
+SAMPLES_PER_EPOCH = 30000
+EPOCHS = 8
+VALIDATION_SAMPLES = 6400
+LEARNING_RATE = 1e-4
 
 def train(train_data_generator,validate_data_generator):
-    car_model = get_model()
+    car_model = get_model(learning_rate=LEARNING_RATE)
     train_history = car_model.fit_generator(train_data_generator, 
                                 samples_per_epoch=SAMPLES_PER_EPOCH, 
                                 verbose=1, nb_epoch=EPOCHS,

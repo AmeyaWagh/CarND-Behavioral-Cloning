@@ -5,8 +5,10 @@ from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
 import cv2
 import numpy as np
+import scipy.misc
 
 DATASET_PATH = "/home/ameya/mydata/behavioral_cloning_data"
+# DATASET_PATH = "/home/ameya/mydata/behav_clon_data"
 CSV_PATH = os.path.join(DATASET_PATH,"driving_log.csv")
 BATCH_SIZE = 64
 
@@ -14,7 +16,7 @@ CENTER_IMAGE = 0
 LEFT_IMAGE = 1
 RIGHT_IMAGE = 2
 STEERING = 3
-STEERING_CONST = 0.2
+STEERING_CONST = 0.245
 
 def load_files():
     data = []
@@ -29,11 +31,19 @@ def load_files():
     train_data, test_data = train_test_split(data, test_size = 0.2 )
     train_samples = len(train_data)
     test_samples = len(test_data)
+    print("train_samples",train_samples)
+    print("test_samples",test_samples)
+    ip = raw_input("press key to continue")
     return train_data, train_samples,test_data,test_samples
 
 def flip_image(image,angle):
     return np.fliplr(image), -1*angle
 
+def crop_image(image,top_percent=0.4):
+    return image[np.ceil(top_percent*image.shape[0]):,:]
+
+def reshape_image(image,shape=(64,64,3)):
+    return scipy.misc.imresize(image, shape)
 
 def augment_image(sample,X_data,Y_data):
     center_img = cv2.imread(sample[0])
@@ -70,7 +80,7 @@ def fetch_data(data_type='train'):
         else:
             data, num_samples = test_data,test_samples
 
-        shuffle(data)
+        data = shuffle(data)
         for i in xrange(0,num_samples,BATCH_SIZE):
             X_data = []
             Y_data = []
