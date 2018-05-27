@@ -4,6 +4,11 @@ from keras.layers.convolutional import Convolution2D
 from keras.layers.pooling import MaxPooling2D
 from keras.models import load_model
 from keras.optimizers import Adam
+from keras.utils.visualize_util import plot
+
+def save_summary(summary):
+    with open('modelsummary.txt','w+') as f:
+        print(s)
 
 def get_model(learning_rate=1e-4):
     model = Sequential()
@@ -45,6 +50,9 @@ def get_model(learning_rate=1e-4):
     model.add(Dense(1))
 
     model.summary()
-
+    # plot(model, to_file='model.png')
+    
     model.compile(loss = 'mse', optimizer = Adam(learning_rate))
     return model
+
+
