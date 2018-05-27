@@ -5,9 +5,10 @@ from keras.layers.pooling import MaxPooling2D
 from keras.models import load_model
 from keras.optimizers import Adam
 
-def get_model():
+def get_model(learning_rate=1e-4):
     model = Sequential()
     model.add(Lambda(lambda x: x/127.5 - 1.0 ,input_shape= (160,320,3)))
+    
     # model.add(Cropping2D(cropping = ((50,20) ,(0,0))))
     model.add(Convolution2D(24,5,5, subsample = (2,2),activation = 'relu'))
     model.add(MaxPooling2D(pool_size=(3, 3), strides=(1, 1)))
@@ -41,5 +42,5 @@ def get_model():
     model.add(Activation('relu'))
 
     model.add(Dense(1))
-    model.compile(loss = 'mse', optimizer = Adam(0.001), metrics=['accuracy'])
+    model.compile(loss = 'mse', optimizer = Adam(learning_rate))
     return model
