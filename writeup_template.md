@@ -54,50 +54,7 @@ python drive.py model.h5 imgs/
 ```
 
 
-The [Nvidia End to End learning](https://arxiv.org/pdf/1604.07316.pdf) model in `model.py` is defined in Keras and is given by the function:
 
-```python
-def get_model(learning_rate=1e-4):
-    model = Sequential()
-
-    model.add(Lambda(lambda x: x/127.5 - 1.0 ,input_shape= (160,320,3)))
-    
-    model.add(Cropping2D(cropping = ((65,25) ,(0,0))))
-
-    model.add(Convolution2D(24,5,5, subsample = (2,2),activation = 'relu'))
-
-    model.add(Convolution2D(36,5,5, subsample = (2,2),activation = 'relu'))
-
-    model.add(Convolution2D(48,5,5,subsample = (2,2) ,activation ='relu'))
-
-    model.add(Convolution2D(64,3,3, subsample=(1, 1), activation = 'relu'))
-
-    model.add(Convolution2D(64,3,3, subsample=(1, 1), activation='relu'))
-
-    model.add(Flatten())
-    
-    model.add(Dense(1164))
-    model.add(Dropout(0.1))
-    model.add(Activation('relu'))
-    
-    model.add(Dense(100))
-    model.add(Dropout(0.1))
-    model.add(Activation('relu'))
-
-    model.add(Dense(50))
-    model.add(Dropout(0.1))
-    model.add(Activation('relu'))
-
-    model.add(Dense(10))
-    model.add(Activation('relu'))
-
-    model.add(Dense(1))
-
-    model.summary()
-    
-    model.compile(loss = 'mse', optimizer = Adam(learning_rate))
-    return model
-```
 <!-- #### 3. Submission code is usable and readable -->
 
 <!-- The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works. -->
@@ -161,6 +118,52 @@ ________________________________________________________________________________
 ```
 
 
+
+
+The [Nvidia End to End learning](https://arxiv.org/pdf/1604.07316.pdf) model in `model.py` is defined in Keras and is given by the function:
+
+```python
+def get_model(learning_rate=1e-4):
+    model = Sequential()
+
+    model.add(Lambda(lambda x: x/127.5 - 1.0 ,input_shape= (160,320,3)))
+    
+    model.add(Cropping2D(cropping = ((65,25) ,(0,0))))
+
+    model.add(Convolution2D(24,5,5, subsample = (2,2),activation = 'relu'))
+
+    model.add(Convolution2D(36,5,5, subsample = (2,2),activation = 'relu'))
+
+    model.add(Convolution2D(48,5,5,subsample = (2,2) ,activation ='relu'))
+
+    model.add(Convolution2D(64,3,3, subsample=(1, 1), activation = 'relu'))
+
+    model.add(Convolution2D(64,3,3, subsample=(1, 1), activation='relu'))
+
+    model.add(Flatten())
+    
+    model.add(Dense(1164))
+    model.add(Dropout(0.1))
+    model.add(Activation('relu'))
+    
+    model.add(Dense(100))
+    model.add(Dropout(0.1))
+    model.add(Activation('relu'))
+
+    model.add(Dense(50))
+    model.add(Dropout(0.1))
+    model.add(Activation('relu'))
+
+    model.add(Dense(10))
+    model.add(Activation('relu'))
+
+    model.add(Dense(1))
+
+    model.summary()
+    
+    model.compile(loss = 'mse', optimizer = Adam(learning_rate))
+    return model
+```
 
 <!-- #### 1. An appropriate model architecture has been employed
 
@@ -277,9 +280,16 @@ The parameters were obtained by trial and error. It is generally observed that t
 |				| no of epochs |
 
 #### Testing
-The model was tested by running the simulator in the autonomous mode and using `model.h5` for inference. Initially the model was just trained for 2 laps and 2 epochs to see if the model was working correctly. Later more data was collected by driving aggressively and in the opposite direction. This helped the model to generalize and barely make some sharp turns. about 2 laps of data was collected from the other track which had very sharp turns. this made the model better in turns of taking smooth turns and avoiding crashes.
+The model was tested by running the simulator in the autonomous mode and using `model.h5` for inference. Initially the model was just trained for 2 laps and 2 epochs to see if the model was working correctly. Later more data was collected by driving aggressively and in the opposite direction. This helped the model to generalize and barely make some sharp turns. about 2 laps of data was collected from the other track which had very sharp turns. this made the model better in turns of taking smooth turns and avoiding crashes. The following script was executed to drive car autonomously in the simulator and record the images in `imgs/`
+ 
+```sh
+python drive.py model.h5 imgs/
+```
 
-
+To generate a dash cam video the following command was executed
+```sh
+python video.py imgs/
+```
 
 ---
 
