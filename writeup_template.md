@@ -196,6 +196,8 @@ As it can be seen in the summary, the model has `5,171,319` which are trainable,
 
 The [ Udacity self-driving-car-sim ](https://github.com/udacity/self-driving-car-sim) was used in Training mode to capture images of while driving. There are 3 cameras, `Center`, `Left` and `Right` positioned accordingly on the car. The steering angle is recorded simultaneously and are time synchronized and saved in `driving_log.csv`
 
+Here is the tree of the dataset directory. `IMG/` contains all the images given in the `driving_log.csv`
+
 ```sh
 .
 ├── driving_log.csv
@@ -209,7 +211,7 @@ Here is an example of log from the `driving_log.csv`
 
 | Center Image | Left Image | Right Image | steering | throttle | break | speed |
 |:-------------|:-----------|:------------|:---------|:---------|:------|:------|
-| /home/ameya/mydata/behavioral_cloning_data/IMG/center_2018_05_23_19_36_50_138.jpg |	/home/ameya/mydata/behavioral_cloning_data/IMG/left_2018_05_23_19_36_50_138.jpg	| /home/ameya/mydata/behavioral_cloning_data/IMG/right_2018_05_23_19_36_50_138.jpg	| 0	| 0	| 0	| 4.301273E-06 |
+| /IMG/center_some_timestamp.jpg |	/IMG/left_some_timestamp.jpg	| /IMG/right_some_timestamp.jpg	| 0	| 0	| 0	| 4.301273E-06 |
 
 
 | Left Image | Center Image | Right Image |
